@@ -1811,8 +1811,8 @@ class TelegramBot extends EventEmitter {
   }
 
   getUserChatBoosts(chatId, userId, form = {}) {
-    form.chatId = chatId;
-    form.userId = userId;
+    form.chat_id = chatId;
+    form.user_id = userId;
     return this._request('getUserChatBoosts', { form })
   }
 
