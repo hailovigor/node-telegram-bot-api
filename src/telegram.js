@@ -670,6 +670,7 @@ class TelegramBot extends EventEmitter {
     const chatMember = update.chat_member;
     const myChatMember = update.my_chat_member;
     const chatJoinRequest = update.chat_join_request;
+    const chatBoost = update.chat_boost;
 
     if (message) {
       debug('Process Update message %j', message);
@@ -762,6 +763,9 @@ class TelegramBot extends EventEmitter {
     } else if (chatJoinRequest) {
       debug('Process Update my_chat_member %j', chatJoinRequest);
       this.emit('chat_join_request', chatJoinRequest);
+    }else if (chatBoost) {
+        debug('Process Update chat_boost %j', chatBoost);
+        this.emit('chat_boost', chatBoost);
     }
   }
 
@@ -1804,6 +1808,12 @@ class TelegramBot extends EventEmitter {
   getChat(chatId, form = {}) {
     form.chat_id = chatId;
     return this._request('getChat', { form });
+  }
+
+  getUserChatBoosts(chatId, userId, form = {}) {
+    form.chatId = chatId;
+    form.userId = userId;
+    return this._request('getUserChatBoosts', { form })
   }
 
   /**
