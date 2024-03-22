@@ -1792,6 +1792,32 @@ class TelegramBot extends EventEmitter {
   }
 
   /**
+   * Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty.
+   *
+   * Returns True on success.
+   *
+   * @param  {Object} [options] Additional Telegram query options
+   * @return {Promise} True on success
+   * @see https://core.telegram.org/bots/api#setmydescription
+   */
+  setMyDescription(form = {}) {
+    return this._request('setMyDescription', { form });
+  }
+
+  /**
+   * Use this method to change the bot's short description, which is shown on the bot's profile page
+   * and is sent together with the link when users share the bot.
+   *
+   * @param  {Object} [options] Additional Telegram query options
+   * @return {Promise} Returns True on success.
+   * @see https://core.telegram.org/bots/api#setmyshortdescription
+   */
+  setMyShortDescription(form = {}) {
+    return this._request('setMyShortDescription', { form });
+  }
+
+  
+  /**
    * Use this method for your bot to leave a group, supergroup or channel
    *
    * @param  {Number|String} chatId  Unique identifier for the target chat or username of the target channel (in the format `@channelusername`)
