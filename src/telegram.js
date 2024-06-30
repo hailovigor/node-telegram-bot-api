@@ -2721,6 +2721,7 @@ class TelegramBot extends EventEmitter {
     form.prices = stringify(prices);
     return this._request('createInvoiceLink', { form });
   }
+  
 
   /**
   * Use this method to reply to shipping queries.
